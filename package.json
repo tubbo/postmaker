@@ -8,7 +8,8 @@
   "scripts": {
     "start": "webpack-dev-server",
     "build": "webpack",
-    "test": "jest"
+    "test": "jest",
+    "lint": "eslint src/**/*.js bin/postmaker"
   },
   "keywords": [],
   "description": "",
@@ -20,7 +21,29 @@
     "parameterize": "^0.1.0"
   },
   "devDependencies": {
+    "babel-preset-es2015": "^6.24.1",
     "jest": "^22.4.3",
     "webpack": "^4.8.2"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.js"
+    ],
+    "testMatch": [
+      "<rootDir>/src/**/__tests__/**/*.js?(x)",
+      "<rootDir>/src/**/?(*.)(spec|test).js?(x)"
+    ],
+    "testEnvironment": "node",
+    "testURL": "http://localhost",
+    "transform": {
+      "^.+\\.js$": "<rootDir>/node_modules/babel-jest"
+    },
+    "transformIgnorePatterns": [
+      "[/\\\\]node_modules[/\\\\].+\\.(js|jsx)$"
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "json"
+    ]
   }
 }

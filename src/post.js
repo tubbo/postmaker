@@ -1,11 +1,13 @@
 import { readFileSync, writeFileSync } from "fs"
 import { template, trim } from "lodash"
-import { dump } from "yaml-js"
+import { dump } from "js-yaml"
 import moment from "moment"
 import parameterize from "parameterize"
+import path from "path"
 
 const HYPHENS = "YYYY-MM-DD",
       SLASHES = "YYYY/MM/DD",
+      ARTICLE_PATH = path.join(__dirname, "article.md"),
       interpolate = /{{([\s\S]+?)}}/g
 
 /**
@@ -22,7 +24,7 @@ export default class Post {
    * @static
    */
   static get template() {
-    return template(readFileSync("./article.md"), { interpolate })
+    return template(readFileSync(ARTICLE_PATH), { interpolate })
   }
 
   /**
