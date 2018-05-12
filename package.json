@@ -1,12 +1,12 @@
 {
   "name": "postmaker",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "dist/index.js",
   "module": "src/index.js",
   "author": "Tom Scott <tscott@weblinc.com>",
   "license": "MIT",
   "scripts": {
-    "build": "babel src -D",
+    "build": "babel src -o index.js",
     "test": "jest",
     "lint": "eslint"
   },
@@ -30,8 +30,7 @@
       "src/**/*.js"
     ],
     "testMatch": [
-      "<rootDir>/src/**/__tests__/**/*.js?(x)",
-      "<rootDir>/src/**/?(*.)(spec|test).js?(x)"
+      "<rootDir>/test/**/?(*.)(spec|test).js?(x)"
     ],
     "testEnvironment": "node",
     "testURL": "http://localhost",
@@ -45,5 +44,14 @@
       "js",
       "json"
     ]
+  },
+  "babel": {
+    "presets": ["es2015", "stage-2"],
+    "env": {
+      "presets": [["es2015", {"modules": false}]],
+      "test": {
+        "plugins": ["transform-es2015-modules-commonjs"]
+      }
+    }
   }
 }

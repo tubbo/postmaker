@@ -45,6 +45,20 @@ export default class Post {
   }
 
   /**
+   * Create a new Post and write it to disk.
+   *
+   * @param {object} params - Params for the new Post object.
+   * @return {Post} The new Post object.
+   */
+  static create(params = {}) {
+    const post = new Post(params)
+
+    post.write()
+
+    return post
+  }
+
+  /**
    * @class Post
    * @param {object} params - name, category, and tags
    */
