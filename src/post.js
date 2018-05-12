@@ -1,4 +1,4 @@
-import { readFileSync, writeFileSync } from "fs"
+import { readFileSync, writeFileSync, existsSync } from "fs"
 import { template, trim } from "lodash"
 import { dump } from "js-yaml"
 import moment from "moment"
@@ -62,10 +62,11 @@ export default class Post {
    * @class Post
    * @param {object} params - name, category, and tags
    */
-  constructor({ name, category, tags }) {
-    this.name = name
+  constructor({ title, category, tags, path }) {
+    this.title = title
     this.category = category
     this.tags = tags
+    this.filepath = path
   }
 
   /**
@@ -79,14 +80,14 @@ export default class Post {
    * @property {string} id - The parameterized name
    */
   get id() {
-    return parameterize(this.name)
+    return parameterize(this.title)
   }
 
   /**
    * @property {string} filename - Name of the source file on disk
    */
   get filename() {
-    return `${Post.now.hyphens}-${this.id}.md`
+    return `${this.filepath}/${Post.now.hyphens}-${this.id}.md`
   }
 
   /**
@@ -126,6 +127,7 @@ export default class Post {
    * @return {Boolean} Whether the file wrote to disk
    */
   write() {
-    return writeFileSync(this.filename, this.contents)
+    writeFileSync(this.filename, this.contents)
+    return existsSync(this.filename)
   }
 }

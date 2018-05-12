@@ -1,7 +1,8 @@
-import Post from "./post"
+import _Post from "./post"
 import generate from "./generate"
 
-export default {
-  Post,
-  generate
+export const Post = _Post
+
+export default function(params = {}) {
+  return Post.create(params)
 }
