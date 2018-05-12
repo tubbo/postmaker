@@ -113,5 +113,3 @@ export default class Post {
     return writeFileSync(this.filename, this.contents)
   }
 }
-
-
