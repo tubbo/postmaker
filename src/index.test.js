@@ -1,4 +1,4 @@
-const postmaker = require('./index')
+import { generate } from "./index"
 
 test('generates article', () => {
   const params = {
@@ -7,5 +7,6 @@ test('generates article', () => {
     tags: ["foo", "bar"],
     path: "./tmp"
   }
-  expect(postmaker.generate(params)).toBe(true)
+
+  expect(generate(params)).toBe(true)
 })

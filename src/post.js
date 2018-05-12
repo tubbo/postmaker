@@ -102,7 +102,7 @@ export default class Post {
    * @property {string} contents - Full source of the generated article
    */
   get contents() {
-    return Post.template({ "frontMatter": trim(this.metadata) })
+    return Post.template({ frontMatter: trim(this.metadata) })
   }
 
   /**

@@ -1,15 +1,14 @@
 {
   "name": "postmaker",
   "version": "1.0.0",
-  "main": "dist/postmaker.js",
+  "main": "index.js",
   "module": "src/index.js",
   "author": "Tom Scott <tscott@weblinc.com>",
   "license": "MIT",
   "scripts": {
-    "start": "webpack-dev-server",
-    "build": "webpack",
+    "build": "babel src -D",
     "test": "jest",
-    "lint": "eslint src/**/*.js bin/postmaker"
+    "lint": "eslint"
   },
   "keywords": [],
   "description": "",
@@ -21,9 +20,10 @@
     "parameterize": "^0.1.0"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
     "babel-preset-es2015": "^6.24.1",
-    "jest": "^22.4.3",
-    "webpack": "^4.8.2"
+    "babel-preset-stage-2": "^6.24.1",
+    "jest": "^22.4.3"
   },
   "jest": {
     "collectCoverageFrom": [
