@@ -1,0 +1,4 @@
+#!/usr/bin/env node
+
+// just runs the CLI
+require("../src/cli")()
