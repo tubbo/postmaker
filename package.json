@@ -3,15 +3,12 @@
   "version": "1.0.0",
   "main": "dist/index.js",
   "module": "src/index.js",
-  "author": "Tom Scott <tscott@weblinc.com>",
+  "author": "Tom Scott <postmaker@psychedeli.ca> (https://psychedeli.ca)",
   "license": "MIT",
-  "scripts": {
-    "build": "babel src -o index.js",
-    "test": "jest",
-    "lint": "eslint"
-  },
-  "keywords": [],
-  "description": "",
+  "homepage": "https://github.com/tubbo/postmaker",
+  "bugs": "https://github.com/tubbo/postmaker/issues",
+  "keywords": ["markdown", "static", "blogging", "gatsby", "jekyll"],
+  "description": "Standalone article generator for self-hosted, flat file blogs",
   "dependencies": {
     "js-yaml": "^3.11.0",
     "lodash": "^4.17.10",
@@ -25,6 +22,14 @@
     "babel-preset-stage-2": "^6.24.1",
     "jest": "^22.4.3",
     "rimraf": "^2.6.2"
+  },
+  "bin": {
+    "postmaker": "./bin/postmaker"
+  },
+  "scripts": {
+    "build": "babel src -d lib -D",
+    "test": "jest",
+    "lint": "eslint"
   },
   "jest": {
     "collectCoverageFrom": [

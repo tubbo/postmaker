@@ -40,7 +40,7 @@
 
 const { argv } = require("optimist"),
       rc = require("rc"),
-      postmaker = require("../dist/postmaker"),
+      postmaker = require("../lib"),
       _ = require("lodash"),
       // Configurable defaults
       defaults = rc("postmake", {
@@ -55,14 +55,15 @@ const { argv } = require("optimist"),
         path: argv.p
       },
       // Method arguments
-      name = argv._.first(),
+      name = argv._[0],
       category = options.category || defaults.category,
       path = options.path || defaults.path,
       tags = options.tags || defaults.tags
 
 // Throw an error if no arguments are given
 if (_.isEmpty(name)) {
-  throw "Usage: postmaker NAME [OPTIONS]"
+  console.log("Usage: postmaker NAME [OPTIONS]")
+  process.exit(1)
 }
 
 // Generate the article
