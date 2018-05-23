@@ -55,21 +55,21 @@ const { argv } = require("optimist"),
         path: argv.p
       },
       // Method arguments
-      name = argv._[0],
+      title = argv._[0],
       category = options.category || defaults.category,
       path = options.path || defaults.path,
       tags = options.tags || defaults.tags
 
 // Throw an error if no arguments are given
-if (_.isEmpty(name)) {
+if (_.isEmpty(title)) {
   console.log("Usage: postmaker NAME [OPTIONS]")
   process.exit(1)
 }
 
 // Generate the article
-postmaker.generate({
-  category: category,
-  name: name,
-  path: path,
-  tags: tags
+postmaker.create({
+  category,
+  title,
+  path,
+  tags
 })

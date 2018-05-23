@@ -1,13 +1,19 @@
 {
   "name": "postmaker",
   "version": "1.0.0",
-  "main": "dist/index.js",
+  "main": "lib/index.js",
   "module": "src/index.js",
   "author": "Tom Scott <postmaker@psychedeli.ca> (https://psychedeli.ca)",
   "license": "MIT",
   "homepage": "https://github.com/tubbo/postmaker",
   "bugs": "https://github.com/tubbo/postmaker/issues",
-  "keywords": ["markdown", "static", "blogging", "gatsby", "jekyll"],
+  "keywords": [
+    "markdown",
+    "static",
+    "blogging",
+    "gatsby",
+    "jekyll"
+  ],
   "description": "Standalone article generator for self-hosted, flat file blogs",
   "dependencies": {
     "js-yaml": "^3.11.0",
@@ -18,18 +24,23 @@
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
-    "babel-preset-es2015": "^6.24.1",
-    "babel-preset-stage-2": "^6.24.1",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
+    "babel-preset-env": "^1.7.0",
     "jest": "^22.4.3",
+    "jsdoc": "^3.5.5",
+    "jsdoc-template": "^1.2.0",
     "rimraf": "^2.6.2"
   },
   "bin": {
     "postmaker": "./bin/postmaker"
   },
   "scripts": {
-    "build": "babel src -d lib -D",
+    "clean": "rm -rf lib tmp/**/* doc",
+    "build": "babel src -d lib -D && echo \"\nmodule.exports = exports.default\" >> lib/index.js",
     "test": "jest",
-    "lint": "eslint"
+    "lint": "eslint src",
+    "docs": "rm -rf doc && jsdoc ./README.md ./package.json ./src -d doc"
   },
   "jest": {
     "collectCoverageFrom": [
@@ -53,8 +64,11 @@
   },
   "babel": {
     "presets": [
-      "es2015",
-      "stage-2"
+      "env"
+    ],
+    "plugins": [
+      "transform-es2015-modules-commonjs",
+      "add-module-exports"
     ],
     "env": {
       "presets": [
@@ -64,12 +78,7 @@
             "modules": false
           }
         ]
-      ],
-      "test": {
-        "plugins": [
-          "transform-es2015-modules-commonjs"
-        ]
-      }
+      ]
     }
   }
 }

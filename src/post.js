@@ -1,26 +1,27 @@
-import { readFileSync, writeFileSync, existsSync } from "fs"
+import { existsSync, readFileSync, writeFileSync } from "fs"
 import { template, trim } from "lodash"
 import { dump } from "js-yaml"
 import moment from "moment"
+import Path from "path"
 import parameterize from "parameterize"
-import path from "path"
 
 const HYPHENS = "YYYY-MM-DD",
       SLASHES = "YYYY/MM/DD",
-      ARTICLE_PATH = path.join(__dirname, "article.md"),
+      ARTICLE_PATH = Path.join(__dirname, "article.md"),
       interpolate = /{{([\s\S]+?)}}/g
 
 /**
  * Represents a single article that can be generated. Posts are
  * instantiated with a hash of options
  *
- * @module postmaker/post
+ * @module Postmaker
  */
 export default class Post {
 
   /**
    * The template function created from lodash.
    *
+   * @class Post
    * @static
    */
   static get template() {
@@ -31,6 +32,7 @@ export default class Post {
    * Date accessors for posts.
    *
    * @static
+   * @class Post
    * @returns {object} The current date and time
    */
   static get now() {
@@ -45,20 +47,6 @@ export default class Post {
   }
 
   /**
-   * Create a new Post and write it to disk.
-   *
-   * @param {object} params - Params for the new Post object.
-   * @return {Post} The new Post object.
-   */
-  static create(params = {}) {
-    const post = new Post(params)
-
-    post.write()
-
-    return post
-  }
-
-  /**
    * @class Post
    * @param {object} params - name, category, and tags
    */
@@ -70,6 +58,7 @@ export default class Post {
   }
 
   /**
+   * @class Post
    * @property {string} path - URL path to this article
    */
   get path() {
@@ -77,6 +66,7 @@ export default class Post {
   }
 
   /**
+   * @class Post
    * @property {string} id - The parameterized name
    */
   get id() {
@@ -84,6 +74,7 @@ export default class Post {
   }
 
   /**
+   * @class Post
    * @property {string} filename - Name of the source file on disk
    */
   get filename() {
@@ -91,6 +82,7 @@ export default class Post {
   }
 
   /**
+   * @class Post
    * @property {object} attributes - All attributes for front-matter combined
    */
   get attributes() {
@@ -107,6 +99,7 @@ export default class Post {
   }
 
   /**
+   * @class Post
    * @property {string} metadata - YAML front-matter for this article
    */
   get metadata() {
@@ -114,6 +107,7 @@ export default class Post {
   }
 
   /**
+   * @class Post
    * @property {string} contents - Full source of the generated article
    */
   get contents() {
@@ -123,11 +117,13 @@ export default class Post {
   /**
    * Write the contents of this Post to disk
    *
-   * @method
+   * @class Post
+   * @method write
    * @return {Boolean} Whether the file wrote to disk
    */
   write() {
     writeFileSync(this.filename, this.contents)
+
     return existsSync(this.filename)
   }
 }
