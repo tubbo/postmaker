@@ -10,7 +10,7 @@ describe('postmaker', () => {
       tags: ["foo", "bar"],
       path: "./tmp"
     }
-    const post = postmaker(params)
+    const post = postmaker.create(params)
 
     expect(post.title).toEqual(params.title)
     expect(post.category).toEqual(params.category)
