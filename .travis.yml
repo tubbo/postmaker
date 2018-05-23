@@ -1,0 +1,10 @@
+language: node_js
+test: yarn test
+deploy:
+  provider: npm
+  email: tubbo@psychedeli.ca
+  api_key:
+    secure: QytgrNkRtzTOXIvvdZiXBVj4w/s80KebbDFgQe0ftvH1b0CGKc84gOI+xE2dW3Gmnx4yJGMTeLP9dO7Rtn0t6eZKz3nrvSN1BNyUm8/D4kAO1StOjBWTfv0WKGU2VOY7v/iqRrJlJB+6/8mlIDWigwwucQhjZ/kg4Nl1PCcdUZlK+Rz5Oe1NP3In8WUdZnRyc6NO9s6AUVjN0/MpjqGoVhN/k7ne8ktWXFqfB5YvDcN7MkyaVLhGPblHJ4LSDJ3Vo9BRNtY1YykfrE1lvNKiSSV3NrJcMuhLmkhS3ZC78QIEY+sQMzPcc0BNCS0mlpclifTZqXKB9M7lGsvOycV7PFlFJg9U7xinNZD2cw9gQ8+qMCZh1sAssTFbKFZG2B0P+dO4gvgxHqDFGyCgih9FXKdSSm7KgRIZwQb2jl4fqB6V14hF1KndZPMHU3MrmxLg7dwafq9qrCEaODMwXErojGI7GC63jNr5Uzz6rRDN+QRiVBARi5ujOlwwR5iTDspsaPRNxGtCbqqMMi6TnnFyXbv402m6qwtpX6WcT7Zn5eSpf9eoyBivOYRO6gUivUklOlM2EVgb3a15pDge1+WncEuigv2hrbsC5HR5Kv1KzWBO54KM7RstyHJSFtfJ198g9MzLs539mh9ElUh0xbDpkSjiRc86dTRD/tW6vyHB1Zc=
+  on:
+    tags: true
+    repo: tubbo/postmaker
