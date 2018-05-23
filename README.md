@@ -82,13 +82,13 @@ When using it in `package.json` scripts, make sure you prefix with the binstub p
 Postmaker also exposes a JS API that lets you work with newly generated
 posts programatically.
 
-To generate a new Post and write it to disk immediately, the easiest
-method is to use the `postmaker()` function:
+To generate a new Post and write it to disk, the easiest
+method is to use the `Postmaker.create()` function:
 
 ```javascript
 import postmaker from "postmaker"
 
-const post = postmaker({
+const post = postmaker.create({
   title: 'name of my post',
   category: 'gbs',
   tags: ['one', 'two']
@@ -96,26 +96,12 @@ const post = postmaker({
 })
 ```
 
-This creates a new article and writes to disk by using the `Post.create`
-static method. The `Post` class contains this static method, so here
-it's used in place of the main function like so:
-
-```javascript
-import { Post } from "postmaker"
-
-const post = Post.create({
-  title: 'name of my post',
-  category: 'gbs',
-  tags: ['one', 'two']
-  path: './src/articles'
-})
-```
-
-The `Post` object is a plain old JavaScript object containing the logic
-for this library. Instead of using `Post.create` or `postmaker()`, which
-will try to write the file to disk before returning the Post object
-back, you can also instantiate the Post object and manipulate its
-behavior before writing to disk:
+This creates a new article and writes to disk, using the `Post` class to
+store data and make transformations. Most of the library's functionality
+is implemented in the `Post` class. Instead of using
+`Postmaker.create()`, which will try to write the file to disk before
+returning the Post object back, you can also instantiate the Post object
+and manipulate its behavior before writing to disk:
 
 ```javascript
 import { Post } from "postmaker"
