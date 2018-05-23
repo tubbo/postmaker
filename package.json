@@ -35,6 +35,7 @@
   "bin": {
     "postmaker": "./bin/postmaker"
   },
+  "files": ["./bin/*", "./lib/*", "./src/*"],
   "scripts": {
     "clean": "rm -rf lib tmp/**/* doc",
     "build": "babel src -d lib -D && echo \"\nmodule.exports = exports.default\" >> lib/index.js",
